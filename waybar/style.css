@@ -63,3 +63,12 @@ window#waybar {
 #pulseaudio.muted {
     color: #928374;
 }
+
+#custom-recording {
+    color: #fb4934;
+    background-color: #282828;
+    padding: 0 10px;
+    margin: 4px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+}
