@@ -1,6 +1,5 @@
 #!/bin/bash
-# Troca de wallpaper via Rofi (miniaturas) + restart do hyprpaper
-# Metodo estavel: escreve no config e reinicia o servico
+# Troca de wallpaper via Rofi (miniaturas) + swww (fade suave, sem flash)
 
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 
@@ -16,26 +15,10 @@ done | rofi -dmenu -p "Wallpaper" -theme ~/.config/rofi/gruvbox.rasi)
 
 FULL_PATH="$WALLPAPER_DIR/$SELECTED"
 
-# Escreve o novo wallpaper no config (sintaxe de bloco que funciona)
-cat > "$HOME/.config/hypr/hyprpaper.conf" << EOF
-ipc = on
+# Aplica com swww (transicao fade suave, aplica em todos os monitores)
+swww img "$FULL_PATH" --transition-type fade --transition-duration 1
 
-preload = $FULL_PATH
-
-wallpaper {
-    monitor = eDP-1
-    path = $FULL_PATH
-}
-
-wallpaper {
-    monitor = HDMI-A-1
-    path = $FULL_PATH
-}
-
-splash = false
-EOF
-
-# Reinicia o servico para aplicar (metodo estavel)
-systemctl --user restart hyprpaper.service
+# Salva a escolha para restaurar no proximo boot
+echo "$FULL_PATH" > "$HOME/.config/hypr/.last_wallpaper"
 
 notify-send "Wallpaper" "Alterado para: $SELECTED"
