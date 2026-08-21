@@ -1,0 +1,11 @@
+(defwindow wallpaper-carousel
+  :monitor 0
+  :geometry (geometry :x "0%" :y "0%" :width "100%" :height "100%" :anchor "center")
+  :stacking "overlay"
+  :focusable false
+  (centerbox :orientation "vertical"
+    (box)
+    (literal :content carousel-content)
+    (box)))
+
+(defvar carousel-content "(box)")

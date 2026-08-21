@@ -1,0 +1,35 @@
+* { all: unset; }
+
+.carousel { padding: 80px 60px; }
+
+.wall-img {
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+  border-radius: 0px;
+}
+
+/* selecionado (centro) - maior */
+.d0 .wall-img {
+  min-width: 240px;
+  min-height: 480px;
+  border: 3px solid #f9f5d7;
+}
+
+/* vizinhos proximos */
+.d1 .wall-img {
+  min-width: 190px;
+  min-height: 380px;
+}
+
+/* medios */
+.d2 .wall-img {
+  min-width: 150px;
+  min-height: 300px;
+}
+
+/* distantes - menores */
+.d3 .wall-img {
+  min-width: 110px;
+  min-height: 220px;
+}
