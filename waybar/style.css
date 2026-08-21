@@ -21,7 +21,7 @@ window#waybar {
     margin: 4px 6px;
 }
 
-/* Gruvbox: fundo escuro #282828, texto bege #ebdbb2, destaque laranja #d65d0e */
+/* Gruvbox: fundo escuro #282828, texto bege #ebdbb2, destaque laranja #f9f5d7 */
 
 #workspaces button {
     color: #a89984;
@@ -31,7 +31,7 @@ window#waybar {
 
 #workspaces button.active {
     color: #282828;
-    background-color: #d65d0e;
+    background-color: #f9f5d7;
     border-radius: 8px;
 }
 

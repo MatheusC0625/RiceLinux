@@ -8,12 +8,8 @@ bar_spacing = 1
 orientation = bottom
 
 [color]
-gradient = 1
-gradient_count = 4
-gradient_color_1 = '#d65d0e'
-gradient_color_2 = '#fe8019'
-gradient_color_3 = '#fabd2f'
-gradient_color_4 = '#ebdbb2'
+gradient = 0
+foreground = '#f9f5d7'
 
 [smoothing]
 noise_reduction = 45

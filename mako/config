@@ -10,7 +10,7 @@ font=JetBrainsMono Nerd Font 11
 
 background-color=#282828
 text-color=#ebdbb2
-border-color=#d65d0e
+border-color=#f9f5d7
 
 default-timeout=5000
 max-visible=4

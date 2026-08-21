@@ -1,0 +1,50 @@
+* {
+    bg:       #282828;
+    bg-alt:   #3c3836;
+    fg:       #ebdbb2;
+    accent:   #d65d0e;
+    background-color: transparent;
+    text-color: @fg;
+    font: "JetBrainsMono Nerd Font 26";
+}
+
+window {
+    background-color: @bg;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 16px;
+    padding: 30px;
+    location: center;
+    width: 900px;
+}
+
+mainbox {
+    children: [ "listview" ];
+}
+
+listview {
+    layout: horizontal;
+    lines: 1;
+    columns: 5;
+    spacing: 20px;
+    scrollbar: false;
+}
+
+element {
+    orientation: vertical;
+    padding: 40px 20px;
+    border-radius: 12px;
+    background-color: @bg-alt;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: @bg;
+    border: 2px;
+    border-color: #fe8019;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}

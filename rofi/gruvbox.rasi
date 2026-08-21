@@ -3,7 +3,7 @@
     bg-alt:   #3c3836;
     fg:       #ebdbb2;
     fg-alt:   #a89984;
-    accent:   #d65d0e;
+    accent:   #f9f5d7;
 
     background-color: transparent;
     text-color: @fg;
