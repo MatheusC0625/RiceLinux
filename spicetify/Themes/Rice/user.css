@@ -1,0 +1,25 @@
+/* Rice theme — combina com o resto do setup: fonte, cantos arredondados tipo "ilha"
+   (mesmo estilo do waybar/wlogout). A transparência em si vem do Hyprland
+   (windowrule de opacity + blur na janela do Spotify), igual já é feito
+   com o kitty e os terminais decorativos (cava/fastfetch). */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "gotham", "Circular", sans-serif !important;
+}
+
+.main-view-container,
+.Root__nav-bar,
+.Root__now-playing-bar {
+    border-radius: 8px;
+}
+
+.main-trackList-trackListRowGrid:hover,
+.main-card-card:hover {
+    border-radius: 8px;
+}
+
+button,
+.main-playButton-PlayButton,
+.player-controls__buttons button {
+    border-radius: 10px;
+}
