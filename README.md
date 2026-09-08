@@ -9,6 +9,8 @@ Notebook ASUS Vivobook (Ryzen 5 7520U). GNOME permanece como sessao fallback no 
 SUPER + Enter        Terminal (Kitty)
 SUPER + R            Launcher de apps (Rofi)
 SUPER + E            Gerenciador de arquivos (Nautilus)
+SUPER + B            Navegador (Brave)
+SUPER + C            Claude Code (terminal novo)
 SUPER + Q            Fechar janela ativa
 
 -- Janelas e Workspaces --
