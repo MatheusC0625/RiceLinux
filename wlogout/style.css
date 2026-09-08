@@ -21,12 +21,14 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
-button:hover {
-    background-color: #d65d0e;
+button:hover,
+button:focus {
+    background-color: #f9f5d7;
     color: #282828;
-    border: 2px solid #fe8019;
+    border: 2px solid #f9f5d7;
     margin: 6px;
     background-size: 25%;
+    outline: none;
 }
 
 #lock {
