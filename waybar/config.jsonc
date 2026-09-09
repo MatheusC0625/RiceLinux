@@ -4,9 +4,15 @@
     "height": 34,
     "spacing": 6,
 
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
+    "modules-left": ["custom/settings", "hyprland/workspaces"],
+    "modules-center": ["clock", "custom/weather"],
     "modules-right": ["pulseaudio", "network", "battery"],
+
+    "custom/settings": {
+        "format": "󰒓",
+        "tooltip-format": "Configurações do sistema",
+        "on-click": "gnome-control-center"
+    },
 
     "hyprland/workspaces": {
         "format": "{id}",
@@ -16,6 +22,13 @@
     "clock": {
         "format": "  {:%H:%M  ·  %d/%m}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh",
+        "return-type": "json",
+        "interval": 900,
+        "tooltip": true
     },
 
     "pulseaudio": {

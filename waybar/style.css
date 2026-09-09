@@ -12,7 +12,6 @@ window#waybar {
 }
 
 /* barra flutuante: cada grupo vira uma "ilha" arredondada */
-.modules-left,
 .modules-center,
 .modules-right {
     background-color: #282828;
@@ -22,6 +21,23 @@ window#waybar {
 }
 
 /* Gruvbox: fundo escuro #282828, texto bege #ebdbb2, destaque laranja #f9f5d7 */
+
+/* settings e workspaces viram "ilhas" separadas, lado a lado */
+#custom-settings,
+#workspaces {
+    background-color: #282828;
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin: 4px 6px;
+}
+
+#custom-settings {
+    color: #ebdbb2;
+}
+
+#custom-settings:hover {
+    color: #f9f5d7;
+}
 
 #workspaces button {
     color: #a89984;
@@ -38,6 +54,11 @@ window#waybar {
 #workspaces button:hover {
     color: #ebdbb2;
     background-color: #3c3836;
+}
+
+#custom-weather {
+    color: #ebdbb2;
+    padding: 0 8px;
 }
 
 #clock {
