@@ -42,20 +42,20 @@ PanelWindow {
 
     Rectangle {
         id: panel
-        width: 780
-        height: 540
-        x: (root.width - width) / 2
-        y: -height
+        width: 400
+        height: Screen.height - 64
+        x: Screen.width
+        y: 44
         radius: 18
         color: "#282828"
         border.width: 1
         border.color: "#504945"
 
-        Behavior on y {
+        Behavior on x {
             SpringAnimation { spring: 3.5; damping: 0.45; mass: 0.9 }
         }
 
-        Component.onCompleted: y = 0
+        Component.onCompleted: x = Screen.width - width - 16
 
         MouseArea {
             anchors.fill: parent
@@ -85,7 +85,7 @@ PanelWindow {
 
                         Row {
                             anchors.centerIn: parent
-                            spacing: 8
+                            spacing: 6
                             Text {
                                 text: root.tabIcons[index]
                                 color: root.currentTab === index ? "#f9f5d7" : "#a89984"
@@ -94,10 +94,11 @@ PanelWindow {
                             }
                             Text {
                                 text: root.tabNames[index]
-                                color: root.currentTab === index ? "#f9f5d7" : "#a89984"
+                                visible: root.currentTab === index
+                                color: "#f9f5d7"
                                 font.family: "JetBrainsMono Nerd Font"
-                                font.pixelSize: 13
-                                font.bold: root.currentTab === index
+                                font.pixelSize: 12
+                                font.bold: true
                             }
                         }
 

@@ -40,78 +40,53 @@ Item {
 
         Rectangle {
             width: parent.width
-            height: 150
+            height: 220
             radius: 14
             color: "#3c3836"
-            Row {
+            Column {
                 anchors.fill: parent
-                anchors.margins: 20
+                anchors.margins: 18
+                spacing: 8
 
-                Column {
-                    width: parent.width * 0.55
-                    height: parent.height
-                    spacing: 4
-                    Text {
-                        text: root.weather ? root.weather.location : ""
-                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 20; font.bold: true
-                    }
-                    Text {
-                        text: root.weather ? root.weather.region : ""
-                        color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                    }
-                    Item { width: 1; height: 10 }
-                    Row {
-                        spacing: 10
-                        Text { text: "󰖨"; color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 44 }
-                        Column {
-                            anchors.verticalCenter: parent.verticalCenter
-                            Text {
-                                text: root.weather ? (root.weather.tempC + "°C") : ""
-                                color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 34; font.bold: true
-                            }
-                            Text {
-                                text: root.weather ? root.weather.desc : ""
-                                color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
-                            }
+                Text {
+                    text: root.weather ? root.weather.location : ""
+                    color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 19; font.bold: true
+                }
+                Text {
+                    text: root.weather ? root.weather.region : ""
+                    color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
+                }
+                Row {
+                    spacing: 10
+                    topPadding: 4
+                    Text { text: "󰖨"; color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 40 }
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        Text {
+                            text: root.weather ? (root.weather.tempC + "°C") : ""
+                            color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 30; font.bold: true
+                        }
+                        Text {
+                            text: root.weather ? root.weather.desc : ""
+                            color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
                         }
                     }
                 }
-
-                Column {
-                    width: parent.width * 0.45
-                    height: parent.height
-                    spacing: 10
-                    Row {
-                        spacing: 8
-                        Text { text: "󰖜"; color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14 }
-                        Text {
-                            text: "Nascer do sol " + (root.weather ? root.weather.sunrise : "")
-                            color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                        }
+                Rectangle { width: parent.width; height: 1; color: "#282828"; }
+                Row {
+                    spacing: 8
+                    Text { text: "󰖜"; color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13 }
+                    Text {
+                        text: "Nascer " + (root.weather ? root.weather.sunrise : "") + "   󰖛  Pôr " + (root.weather ? root.weather.sunset : "")
+                        color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
                     }
-                    Row {
-                        spacing: 8
-                        Text { text: "󰖛"; color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14 }
-                        Text {
-                            text: "Pôr do sol " + (root.weather ? root.weather.sunset : "")
-                            color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                        }
-                    }
-                    Row {
-                        spacing: 8
-                        Text { text: "󰖎"; color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14 }
-                        Text {
-                            text: "Umidade " + (root.weather ? root.weather.humidity : "") + "%"
-                            color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                        }
-                    }
-                    Row {
-                        spacing: 8
-                        Text { text: "󰈐"; color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14 }
-                        Text {
-                            text: "Sensação " + (root.weather ? root.weather.feelsLikeC : "") + "°C  ·  vento " + (root.weather ? root.weather.windKmph : "") + " km/h"
-                            color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                        }
+                }
+                Row {
+                    spacing: 8
+                    Text { text: "󰖎"; color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13 }
+                    Text {
+                        text: "Umidade " + (root.weather ? root.weather.humidity : "") + "%   󰈐  Sensação " + (root.weather ? root.weather.feelsLikeC : "") + "°C"
+                        color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
                     }
                 }
             }
@@ -119,11 +94,11 @@ Item {
 
         Rectangle {
             width: parent.width
-            height: parent.height - 150 - 12
+            height: parent.height - 220 - 12
             radius: 14
             color: "#3c3836"
 
-            Row {
+            Column {
                 anchors.fill: parent
                 anchors.margins: 16
                 spacing: 10
@@ -133,35 +108,45 @@ Item {
                     delegate: Rectangle {
                         required property var modelData
                         required property int index
-                        width: (parent.width - 20) / 3
-                        height: parent.height
+                        width: parent.width
+                        height: 64
                         radius: 10
                         color: "#282828"
-                        Column {
-                            anchors.centerIn: parent
-                            spacing: 8
+                        Item {
+                            anchors.fill: parent
+                            anchors.margins: 12
+
                             Text {
-                                anchors.horizontalCenter: parent.horizontalCenter
+                                id: dayLbl
+                                anchors.left: parent.left
+                                anchors.verticalCenter: parent.verticalCenter
                                 text: root.dayLabel(modelData.date, index)
+                                width: 56
                                 color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13; font.bold: true
                             }
                             Text {
-                                anchors.horizontalCenter: parent.horizontalCenter
+                                id: dayIcon
+                                anchors.left: dayLbl.right
+                                anchors.verticalCenter: parent.verticalCenter
                                 text: "󰖐"
-                                color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 26
+                                color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 20
                             }
                             Text {
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                text: modelData.max + "° / " + modelData.min + "°"
-                                color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                            }
-                            Text {
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                width: parent.parent.width - 12
-                                horizontalAlignment: Text.AlignHCenter
+                                anchors.left: dayIcon.right
+                                anchors.leftMargin: 10
+                                anchors.right: dayTemp.left
+                                anchors.rightMargin: 10
+                                anchors.verticalCenter: parent.verticalCenter
                                 text: modelData.desc
-                                color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 10
-                                wrapMode: Text.WordWrap
+                                elide: Text.ElideRight
+                                color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11
+                            }
+                            Text {
+                                id: dayTemp
+                                anchors.right: parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: modelData.max + "°/" + modelData.min + "°"
+                                color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
                             }
                         }
                     }

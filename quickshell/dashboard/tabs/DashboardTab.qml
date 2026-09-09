@@ -125,155 +125,70 @@ Item {
     }
     Component.onCompleted: hostProc.running = true
 
-    Row {
+    Column {
         anchors.fill: parent
-        spacing: 16
+        spacing: 12
 
-        // coluna esquerda
-        Column {
-            width: (parent.width - 16) * 0.6
-            height: parent.height
-            spacing: 12
-
-            Rectangle {
-                width: parent.width
-                height: 90
-                radius: 12
-                color: "#3c3836"
-                Row {
-                    anchors.fill: parent
-                    anchors.margins: 14
-                    spacing: 14
-                    Text {
-                        text: "󰖐"
-                        color: "#f9f5d7"
-                        font.family: "JetBrainsMono Nerd Font"
-                        font.pixelSize: 32
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
-                        spacing: 2
-                        Text {
-                            text: root.weather ? (root.weather.tempC + "°C") : "--°C"
-                            color: "#f9f5d7"
-                            font.family: "JetBrainsMono Nerd Font"
-                            font.pixelSize: 22
-                            font.bold: true
-                        }
-                        Text {
-                            text: root.weather ? (root.weather.desc + " · " + root.weather.location) : "carregando…"
-                            color: "#a89984"
-                            font.family: "JetBrainsMono Nerd Font"
-                            font.pixelSize: 12
-                        }
-                    }
+        Rectangle {
+            width: parent.width
+            height: 90
+            radius: 12
+            color: "#3c3836"
+            Row {
+                anchors.fill: parent
+                anchors.margins: 14
+                spacing: 14
+                Text {
+                    text: "󰖐"
+                    color: "#f9f5d7"
+                    font.family: "JetBrainsMono Nerd Font"
+                    font.pixelSize: 32
+                    anchors.verticalCenter: parent.verticalCenter
                 }
-            }
-
-            Rectangle {
-                width: parent.width
-                height: 90
-                radius: 12
-                color: "#3c3836"
                 Column {
-                    anchors.fill: parent
-                    anchors.margins: 14
-                    spacing: 6
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 2
                     Text {
-                        text: root.fmtDate()
+                        text: root.weather ? (root.weather.tempC + "°C") : "--°C"
                         color: "#f9f5d7"
                         font.family: "JetBrainsMono Nerd Font"
-                        font.pixelSize: 14
+                        font.pixelSize: 22
                         font.bold: true
                     }
                     Text {
-                        text: root.host ? ("󰣇  " + root.host.distro) : ""
-                        color: "#a89984"
-                        font.family: "JetBrainsMono Nerd Font"
-                        font.pixelSize: 12
-                    }
-                    Text {
-                        text: root.host ? ("󰇄  " + root.host.wm + "  ·  up " + root.host.uptime) : ""
+                        text: root.weather ? (root.weather.desc + " · " + root.weather.location) : "carregando…"
                         color: "#a89984"
                         font.family: "JetBrainsMono Nerd Font"
                         font.pixelSize: 12
                     }
                 }
             }
+        }
 
-            Rectangle {
-                width: parent.width
-                height: parent.height - 90 - 90 - 24
-                radius: 12
-                color: "#3c3836"
-                Item {
-                    anchors.fill: parent
-                    anchors.margins: 16
-                    visible: root.track !== null
-
-                    Item {
-                        id: miniArt
-                        width: 70
-                        height: 70
-                        anchors.left: parent.left
-                        anchors.verticalCenter: parent.verticalCenter
-                        rotation: 0
-
-                        Rectangle {
-                            anchors.fill: parent
-                            radius: width / 2
-                            color: "#282828"
-                            visible: miniImg.status !== Image.Ready
-                        }
-                        Image {
-                            id: miniImg
-                            anchors.fill: parent
-                            fillMode: Image.PreserveAspectFit
-                            asynchronous: true
-                            cache: false
-                            source: root.artPath ? ("file://" + root.artPath) : ""
-                        }
-                        NumberAnimation {
-                            running: root.track && root.track.status === "Playing"
-                            target: miniArt
-                            property: "rotation"
-                            from: miniArt.rotation
-                            to: miniArt.rotation + 360
-                            duration: 6000
-                            loops: Animation.Infinite
-                        }
-                    }
-
-                    Column {
-                        anchors.left: miniArt.right
-                        anchors.leftMargin: 14
-                        anchors.right: parent.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        spacing: 3
-                        Text {
-                            width: parent.width
-                            text: root.track ? root.track.title : ""
-                            color: "#f9f5d7"
-                            font.family: "JetBrainsMono Nerd Font"
-                            font.pixelSize: 13
-                            font.bold: true
-                            elide: Text.ElideRight
-                        }
-                        Text {
-                            width: parent.width
-                            text: root.track ? root.track.artist : ""
-                            color: "#a89984"
-                            font.family: "JetBrainsMono Nerd Font"
-                            font.pixelSize: 11
-                            elide: Text.ElideRight
-                        }
-                    }
+        Rectangle {
+            width: parent.width
+            height: 90
+            radius: 12
+            color: "#3c3836"
+            Column {
+                anchors.fill: parent
+                anchors.margins: 14
+                spacing: 6
+                Text {
+                    text: root.fmtDate()
+                    color: "#f9f5d7"
+                    font.family: "JetBrainsMono Nerd Font"
+                    font.pixelSize: 14
+                    font.bold: true
                 }
                 Text {
-                    visible: root.track === null
-                    anchors.centerIn: parent
-                    text: "Nada tocando"
+                    text: root.host ? ("󰣇  " + root.host.distro) : ""
+                    color: "#a89984"
+                    font.family: "JetBrainsMono Nerd Font"
+                    font.pixelSize: 12
+                }
+                Text {
+                    text: root.host ? ("󰇄  " + root.host.wm + "  ·  up " + root.host.uptime) : ""
                     color: "#a89984"
                     font.family: "JetBrainsMono Nerd Font"
                     font.pixelSize: 12
@@ -281,16 +196,94 @@ Item {
             }
         }
 
-        // coluna direita: sliders verticais
         Rectangle {
-            width: parent.width - ((parent.width - 16) * 0.6) - 16
-            height: parent.height
+            width: parent.width
+            height: 100
+            radius: 12
+            color: "#3c3836"
+            Item {
+                anchors.fill: parent
+                anchors.margins: 16
+                visible: root.track !== null
+
+                Item {
+                    id: miniArt
+                    width: 68
+                    height: 68
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    rotation: 0
+
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: width / 2
+                        color: "#282828"
+                        visible: miniImg.status !== Image.Ready
+                    }
+                    Image {
+                        id: miniImg
+                        anchors.fill: parent
+                        fillMode: Image.PreserveAspectFit
+                        asynchronous: true
+                        cache: false
+                        source: root.artPath ? ("file://" + root.artPath) : ""
+                    }
+                    NumberAnimation {
+                        running: root.track && root.track.status === "Playing"
+                        target: miniArt
+                        property: "rotation"
+                        from: miniArt.rotation
+                        to: miniArt.rotation + 360
+                        duration: 6000
+                        loops: Animation.Infinite
+                    }
+                }
+
+                Column {
+                    anchors.left: miniArt.right
+                    anchors.leftMargin: 14
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 3
+                    Text {
+                        width: parent.width
+                        text: root.track ? root.track.title : ""
+                        color: "#f9f5d7"
+                        font.family: "JetBrainsMono Nerd Font"
+                        font.pixelSize: 13
+                        font.bold: true
+                        elide: Text.ElideRight
+                    }
+                    Text {
+                        width: parent.width
+                        text: root.track ? root.track.artist : ""
+                        color: "#a89984"
+                        font.family: "JetBrainsMono Nerd Font"
+                        font.pixelSize: 11
+                        elide: Text.ElideRight
+                    }
+                }
+            }
+            Text {
+                visible: root.track === null
+                anchors.centerIn: parent
+                text: "Nada tocando"
+                color: "#a89984"
+                font.family: "JetBrainsMono Nerd Font"
+                font.pixelSize: 12
+            }
+        }
+
+        // sliders verticais de volume/brilho
+        Rectangle {
+            width: parent.width
+            height: 240
             radius: 12
             color: "#3c3836"
 
             Row {
                 anchors.centerIn: parent
-                spacing: 28
+                spacing: 40
 
                 Column {
                     spacing: 10
@@ -304,7 +297,7 @@ Item {
                     Rectangle {
                         id: volTrack
                         width: 14
-                        height: 220
+                        height: 160
                         radius: 7
                         color: "#282828"
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -344,7 +337,7 @@ Item {
                     Rectangle {
                         id: brightTrack
                         width: 14
-                        height: 220
+                        height: 160
                         radius: 7
                         color: "#282828"
                         anchors.horizontalCenter: parent.horizontalCenter

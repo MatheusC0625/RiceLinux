@@ -39,149 +39,162 @@ Item {
         anchors.fill: parent
         spacing: 12
 
-        Row {
+        Rectangle {
             width: parent.width
-            height: 120
-            spacing: 12
-
-            Rectangle {
-                width: (parent.width - 12) / 2
-                height: parent.height
-                radius: 12
-                color: "#3c3836"
+            height: 92
+            radius: 12
+            color: "#3c3836"
+            Row {
+                anchors.fill: parent
+                anchors.margins: 16
+                spacing: 14
+                Text { text: "󰻠"; color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 26; anchors.verticalCenter: parent.verticalCenter }
                 Column {
-                    anchors.fill: parent
-                    anchors.margins: 18
-                    spacing: 8
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 3
+                    Text {
+                        text: root.stats ? root.stats.cpu.model : "CPU"
+                        color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11
+                        width: 300; elide: Text.ElideRight
+                    }
                     Row {
-                        spacing: 8
-                        Text { text: "󰻠"; color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 16 }
+                        spacing: 10
                         Text {
-                            text: root.stats ? root.stats.cpu.model : "CPU"
-                            color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11
-                            width: parent.parent.width - 30; elide: Text.ElideRight
+                            text: (root.stats ? root.stats.cpu.usage : 0) + "%"
+                            color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 24; font.bold: true
                         }
-                    }
-                    Text {
-                        text: (root.stats ? root.stats.cpu.usage : 0) + "%"
-                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 26; font.bold: true
-                    }
-                    Text {
-                        text: (root.stats ? root.stats.cpu.tempC : 0) + "°C"
-                        color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                    }
-                }
-            }
-
-            Rectangle {
-                width: (parent.width - 12) / 2
-                height: parent.height
-                radius: 12
-                color: "#3c3836"
-                Column {
-                    anchors.fill: parent
-                    anchors.margins: 18
-                    spacing: 8
-                    Row {
-                        spacing: 8
-                        Text { text: "󰢮"; color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 16 }
                         Text {
-                            text: root.stats ? root.stats.gpu.model : "GPU"
-                            color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11
-                            width: parent.parent.width - 30; elide: Text.ElideRight
+                            anchors.baseline: parent.children[0].baseline
+                            text: (root.stats ? root.stats.cpu.tempC : 0) + "°C"
+                            color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
                         }
-                    }
-                    Text {
-                        text: (root.stats ? root.stats.gpu.usage : 0) + "%"
-                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 26; font.bold: true
-                    }
-                    Text {
-                        text: (root.stats ? root.stats.gpu.tempC : 0) + "°C"
-                        color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
                     }
                 }
             }
         }
 
-        Row {
+        Rectangle {
             width: parent.width
-            height: parent.height - 120 - 12
-            spacing: 12
-
-            Rectangle {
-                width: (parent.width - 24) / 3
-                height: parent.height
-                radius: 12
-                color: "#3c3836"
+            height: 92
+            radius: 12
+            color: "#3c3836"
+            Row {
+                anchors.fill: parent
+                anchors.margins: 16
+                spacing: 14
+                Text { text: "󰢮"; color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 26; anchors.verticalCenter: parent.verticalCenter }
                 Column {
-                    anchors.centerIn: parent
-                    spacing: 10
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 3
                     Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: "󰍛  Memória"
-                        color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
+                        text: root.stats ? root.stats.gpu.model : "GPU"
+                        color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11
+                        width: 300; elide: Text.ElideRight
                     }
+                    Row {
+                        spacing: 10
+                        Text {
+                            text: (root.stats ? root.stats.gpu.usage : 0) + "%"
+                            color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 24; font.bold: true
+                        }
+                        Text {
+                            anchors.baseline: parent.children[0].baseline
+                            text: (root.stats ? root.stats.gpu.tempC : 0) + "°C"
+                            color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            width: parent.width
+            height: 80
+            radius: 12
+            color: "#3c3836"
+            Row {
+                anchors.fill: parent
+                anchors.margins: 16
+                Text {
+                    text: "󰍛  Memória"
+                    color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width * 0.5
+                }
+                Column {
+                    width: parent.width * 0.5
+                    anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.right: parent.right
                         text: root.stats ? Math.round(root.stats.mem.usedGiB / root.stats.mem.totalGiB * 100) + "%" : "--%"
-                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 30; font.bold: true
+                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 20; font.bold: true
                     }
                     Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.right: parent.right
                         text: root.stats ? (root.stats.mem.usedGiB + " / " + root.stats.mem.totalGiB + " GiB") : ""
                         color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11
                     }
                 }
             }
+        }
 
-            Rectangle {
-                width: (parent.width - 24) / 3
-                height: parent.height
-                radius: 12
-                color: "#3c3836"
+        Rectangle {
+            width: parent.width
+            height: 80
+            radius: 12
+            color: "#3c3836"
+            Row {
+                anchors.fill: parent
+                anchors.margins: 16
+                Text {
+                    text: "󰋊  Armazenamento"
+                    color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width * 0.5
+                }
                 Column {
-                    anchors.centerIn: parent
-                    spacing: 10
+                    width: parent.width * 0.5
+                    anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: "󰋊  Armazenamento"
-                        color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                    }
-                    Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.right: parent.right
                         text: root.stats ? Math.round(root.stats.disk.usedGiB / root.stats.disk.totalGiB * 100) + "%" : "--%"
-                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 30; font.bold: true
+                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 20; font.bold: true
                     }
                     Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.right: parent.right
                         text: root.stats ? (root.stats.disk.usedGiB + " / " + root.stats.disk.totalGiB + " GiB") : ""
                         color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11
                     }
                 }
             }
+        }
 
-            Rectangle {
-                width: (parent.width - 24) / 3
-                height: parent.height
-                radius: 12
-                color: "#3c3836"
+        Rectangle {
+            width: parent.width
+            height: 80
+            radius: 12
+            color: "#3c3836"
+            Row {
+                anchors.fill: parent
+                anchors.margins: 16
+                Text {
+                    text: "󰛳  Rede"
+                    color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width * 0.5
+                }
                 Column {
-                    anchors.centerIn: parent
-                    spacing: 10
+                    width: parent.width * 0.5
+                    anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: "󰛳  Rede"
-                        color: "#ebdbb2"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
-                    }
-                    Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.right: parent.right
                         text: "↓ " + (root.stats ? root.fmtRate(root.stats.net.rxBps) : "--")
-                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14
+                        color: "#f9f5d7"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
                     }
                     Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.right: parent.right
                         text: "↑ " + (root.stats ? root.fmtRate(root.stats.net.txBps) : "--")
-                        color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14
+                        color: "#a89984"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
                     }
                 }
             }
